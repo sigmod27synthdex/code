@@ -119,7 +119,7 @@ Controls the index configuration synthesis process.
 
 | Key | Default | Description |
 | --- | ------- | ----------- |
-| `variant` | `["grad"]` | Search strategy: `"grid"` (discrete parameter sweep) or `"grad"` (gradient-based continuous optimization). |
+| `variant` | `["grid"]` | Search strategy: `"grid"` (discrete parameter sweep) or `"grad"` (gradient-based continuous optimization, not included). |
 | `top-k` | `3` | Number of top candidate configurations to retain per synthesis round. |
 | `skyline` | `true` | Apply Pareto skyline filtering (throughput vs. size) to prune dominated candidates. |
 | `skyline-tolerance` | `0.005` | Relative tolerance when comparing candidates on the skyline. |
@@ -221,7 +221,7 @@ impl/                       Source code and build
 │   ├── synthesisbase       Shared synthesis infrastructure
 │   ├── skyline             Pareto skyline filtering
 │   ├── sy_grid             Grid-based search
-│   └── sy_grad             Gradient-based search
+│   └── sy_grad             Gradient-based search (not included)
 ├── generation/             Synthetic data generation
 │   ├── ogen                Object generation
 │   ├── qgen                Query generation
