@@ -29,7 +29,7 @@
     {
         "use-templated-synthdex": true,
         "top-k": 3,
-        "variant": ["grad"],
+        "variant": ["grid"],
         "skyline": true,
         "skyline-tolerance": 0.005,
         "top-relative": 0.05,
