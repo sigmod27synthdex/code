@@ -1,0 +1,104 @@
+################################################################################
+# Project:  synthdex
+# Purpose:  Adaptive TIR indexing
+# Author:   Anonymous Author(s)
+################################################################################
+# Copyright (c) 2025 - 2026
+#
+# All rights reserved.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation
+# the rights to use, copy, modify, merge, publish, distribute, sublicense,
+# and/or sell copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included
+# in all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+# OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+# DEALINGS IN THE SOFTWARE.
+################################################################################
+    "synthesis":
+    {
+        "use-templated-synthdex": true,
+        "top-k": 3,
+        "variant": ["grad"],
+        "skyline": true,
+        "skyline-tolerance": 0.005,
+        "top-relative": 0.05,
+        "boundary-tolerance": 0.01,
+        "verbose": false,
+        "store-all-evaluations": true,
+        "sample-size": 1000,
+        "batch-evals-size": 10,
+        "grad":
+        {
+            "max-steps": 4000,
+            "lr": 0.05,
+            "enable-multi-init": true,
+            "objective": "weighted_log",
+            "multi-start": 50,
+            "adam-steps": 1200,
+            "lbfgs-steps": 200,
+            "patience": 60,
+            "min-rel-improve": 1e-4,
+            "grad-clip": 1.0,
+            "cosine-anneal": true,
+            "seed": 42,
+            "trust-region-factor": 0.35,
+            "trust-region-decay": 0.5,
+            "sam-rho": 0.02,
+            "perturb-on-plateau": true,
+            "perturb-trials": 4,
+            "perturb-scale": 0.20,
+            "threshold-slow": 2e-4,
+            "perturb-check-interval": 60,
+            "sobol-local": true,
+            "local-sobol-points": 12,
+            "span-grad-normalize": true,
+            "weight-temperature": 1.0,
+            "revert-on-degradation": true,
+            "max-param-jump-frac": 0.55,
+            "diagnostics-level": 2
+        },
+        "grid":
+        {
+            "step-resolution-and-top-k": 
+            [
+                [6, 20],
+                [3, 10],
+                [2, 2]
+            ],
+            "candidates-limit": 100000,
+            "objective": "weighted_log",
+            "weight-temperature": 1.0
+        },
+        "intervals":
+        {
+            "slices": 20,
+            "clustering":
+            {
+                "contiguous": true
+            },
+        },
+    },
+    "prediction":
+    {
+        "predict-before-run": false,
+        "top-k": 0
+    },
+    "accuracy":
+    {
+        "num-object-collections": 100,
+        "num-indices-per-OQ": 10,
+        "emit-training-data": true,
+        "from-parquet": false,
+        "from-parquet-aggregate-OI": true
+    },
