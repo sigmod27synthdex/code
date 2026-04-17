@@ -25,7 +25,7 @@ Key components of the framework:
 
 
 ## Data
-The datasets and workloads used in the experiments can be sourced from [https://seafile.rlp.net/d/0b8cc26c4b6f4ade9574/](https://seafile.rlp.net/d/0b8cc26c4b6f4ade9574/).
+The datasets and workloads used in the experiments are included for ECLOG.
 Put the unzipped files into directory ```exps/samples```. 
 
 
